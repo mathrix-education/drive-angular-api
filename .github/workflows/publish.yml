@@ -14,11 +14,11 @@ jobs:
       - name: Install
         run: npm install
       - name: Build and publish
-        run: |
+        run:
           LIB=api
-          npm run ng build ${{ LIB }}
+          npm run ng build ${LIB}
 
-          cd dist/${{ LIB }}
+          cd dist/${LIB}
           REF="${{ github.ref }}"
           BRANCH=$(echo "${REF}" | sed "s|refs/heads/||g" | sed "s|\/|-|g")
           SHA="${{ github.sha }}"
