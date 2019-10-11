@@ -1,0 +1,33 @@
+name: Publish
+on: [push]  # Always
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v1
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          registry-url: 'https://npm.pkg.github.com'
+      - name: Install
+        run: npm install
+      - name: Build and publish
+        run: |
+          LIB=api
+          npm run ng build ${{ LIB }}
+
+          cd dist/${{ LIB }}
+          REF="${{ github.ref }}"
+          BRANCH=$(echo "${REF}" | sed "s|refs/heads/||g" | sed "s|\/|-|g")
+          SHA="${{ github.sha }}"
+          SHORT_SHA=${SHA:0:7}
+          BUILD="${BRANCH}-${SHORT_SHA}"
+          if [[ "${BRANCH}" != "master" ]]; then
+            jq ".version = .version + \"-${BUILD}\"" package.json > package.json.tmp
+            mv package.json.tmp package.json
+          fi
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.REGISTRY_TOKEN }}
