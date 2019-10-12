@@ -6,7 +6,7 @@ import {BaseId} from '../../models/base-id';
 import {SuccessResponse} from '../../responses/success-response';
 import {DataResponse} from '../../responses/data-response';
 
-export abstract class RestHttpService<T extends BaseId> {
+export class RestHttpService<T extends BaseId> {
   readonly api: string;
   protected readonly whitelist: string[];
 
