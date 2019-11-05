@@ -3,7 +3,7 @@ import {Tag} from '../../models/tag';
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Question} from '../../models/question';
-import {Theme} from '../../models/theme';
+import {Course} from '../../models/course';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,10 @@ export class TagsHttpService extends RestHttpService<Tag> {
 
   questions(tagId: number, page: number = 0, perPage: number = 10) {
     return this.getRelated<Question>(tagId, 'questions', page, perPage);
+  }
+
+  courses(tagId: number, page: number = 0, perPage: number = 10) {
+    return this.getRelated<Course>(tagId, 'courses', page, perPage);
   }
 
 
