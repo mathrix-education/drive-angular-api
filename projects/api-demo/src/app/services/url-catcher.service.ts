@@ -4,12 +4,14 @@ import {Injectable} from '@angular/core';
   providedIn: 'root'
 })
 export class UrlCatcherService {
-  requests: any[] = [];
+  failedRequests: any[] = [];
+  successRequests: any[] = [];
 
   bearerToken = '';
 
   resetList() {
-    this.requests.length = 0;
+    this.failedRequests.length = 0;
+    this.successRequests.length = 0;
   }
 
 }

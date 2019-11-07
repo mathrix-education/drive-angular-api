@@ -14,15 +14,19 @@ export class HttpValidatorInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    const sendDate = new Date().getTime();
 
     return next.handle(req).pipe(
       tap((response: HttpEvent<any>) => {
-        console.log(typeof response);
+        console.log(req);
         if (response instanceof HttpResponse) {
-          this.urlCatcher.requests.push({url: response.url, status: response.status});
+          const timeoutRequest = (new Date().getTime() - sendDate);
+          this.urlCatcher.successRequests.push({url: response.url, status: response.status, method: req.method, timeout: timeoutRequest});
         }
       }, response => {
-        this.urlCatcher.requests.push({url: response.url, status: response.status});
+        const timeoutRequest = (new Date().getTime() - sendDate);
+
+        this.urlCatcher.failedRequests.push({url: response.url, status: response.status, method: req.method, timeout: timeoutRequest});
       })
     );
   }

@@ -1,14 +1,30 @@
 Bearer token <input [ngModel]="urlCatcher.bearerToken" (ngModelChange)="changeToken($event)">
 
 <nav>
-<button (click)="launchAll()">Toutes</button>
-<button (click)="launchCourses()">Courses</button>
-<button (click)="launchThemes()">Themes</button>
-<button (click)="launchUsers()">Users</button>
+  <button (click)="all()">Toutes</button>
+  <button (click)="courses()">Courses</button>
+  <button (click)="themes()">Themes</button>
+  <button (click)="users()">Users</button>
+  <button (click)="topics()">Topics</button>
+  <button (click)="questions()">Questions</button>
 </nav>
 
 
-<div class="urls" [ngClass]="{right: item.status === 200, wrong: item.status !== 200}" *ngFor="let item of urlCatcher.requests">
-  <span>{{item.url}}</span>
-  <span>{{item.status}}</span>
-</div>
+<h2>échecs</h2>
+<ng-content *ngTemplateOutlet="requests; context: {requests: urlCatcher.failedRequests}"></ng-content>
+<h2>succès</h2>
+<ng-content *ngTemplateOutlet="requests; context: {requests: urlCatcher.successRequests}"></ng-content>
+
+
+<ng-template #requests let-requests="requests">
+  <div class="urls" [ngClass]="{right: item.status === 200, wrong: item.status !== 200}" *ngFor="let item of requests">
+  <span>
+    <span class="method">{{item.method}}</span>
+    {{item.url}}
+  </span>
+
+    <span>
+    <span class="mr-2">{{item.timeout}} ms</span>
+      {{item.status}}</span>
+  </div>
+</ng-template>
