@@ -66,8 +66,8 @@ export class RestHttpService<T extends BaseId> {
   /**
    * Get a model, using `field` as selector.
    */
-  protected getBy(field: string, value: string | number): Observable<PaginatedResponse<T> | DataResponse<T>> {
-    return this.http.get<PaginatedResponse<T> | DataResponse<T>>(`${this.api}${this.base}/${field}/${value}`);
+  protected getBy(id: number, field: string): Observable<PaginatedResponse<T> | DataResponse<T>> {
+    return this.http.get<PaginatedResponse<T> | DataResponse<T>>(`${this.api}${this.base}/${id}/${field}`);
   }
 
   /**

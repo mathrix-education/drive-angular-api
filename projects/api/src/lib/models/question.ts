@@ -1,6 +1,4 @@
 import {BaseId} from './base-id';
-import {Section} from './section';
-import {Tag} from './tag';
 
 export interface Question extends BaseId {
   situational: boolean;
@@ -10,18 +8,17 @@ export interface Question extends BaseId {
   marked?: boolean;
   correction: string;
   correction_original: string;
-  image?: string;
-  image_original?: string;
-  video?: string;
-  video_original?: string;
-  sound?: string;
-  sound_original?: string;
-  sections?: Section[]; // associated sections inside a result
+  correction_sound: string;
+  correction_sound_original: string;
+  image: string;
+  image_original: string;
+  video: string;
+  video_original: string;
+  sound: string;
+  sound_original: string;
   order?: number;
   created_at?: number;
   updated_at?: number;
-  tag_ids: number[];
-  tags?: Tag[];
-  situation_id: number;
+  topic_id: number;
   reviewed: boolean;
 }

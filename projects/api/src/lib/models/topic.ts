@@ -1,6 +1,8 @@
 import {BaseId} from './base-id';
 
-export interface Tag extends BaseId {
+export interface Topic extends BaseId {
     name: string;
+    slug: string;
+    order: number;
     theme_id: number;
 }

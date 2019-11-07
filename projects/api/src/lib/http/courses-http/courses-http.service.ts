@@ -8,22 +8,11 @@ import {HttpClient} from '@angular/common/http';
 })
 export class CoursesHttpService extends RestHttpService <Course> {
 
-  protected readonly whitelist = ['name', 'theme_id', 'order'];
+  protected readonly whitelist = ['name', 'topic_id', 'order', 'content'];
 
   constructor(http: HttpClient) {
     super(http, '/courses');
   }
-
-  /**
-   * Return related section of the course
-   * @param courseId
-   * @param page
-   * @param perPage
-   */
-  sections(courseId: number, page: number = 0, perPage: number = 1000) {
-    return this.getRelated(courseId, 'sections', page, perPage);
-  }
-
 
 }
 

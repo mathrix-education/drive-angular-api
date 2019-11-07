@@ -9,6 +9,8 @@ import {QuestionsHttpService} from '../../../../api/src/lib/http/questions-http/
 import {Course} from '../../../../api/src/lib/models/course';
 import {DataResponse} from '../../../../api/src/lib/responses/data-response';
 import {CoursesHttpService} from '../../../../api/src/lib/http/courses-http/courses-http.service';
+import {Series} from '../../../../api/src/lib/models/series';
+import {SeriesHttpService} from '../../../../api/src/lib/http/series-http/series-http.service';
 
 @Component({
   selector: 'app-root',
@@ -22,6 +24,7 @@ export class AppComponent {
   constructor(
     private coursesHttp: CoursesHttpService,
     private themesHttp: ThemesHttpService,
+    private seriesHttp: SeriesHttpService,
     private topicsHttp: TopicsHttpService,
     private usersHttp: UsersHttpService,
     private questionsHttp: QuestionsHttpService,
@@ -36,13 +39,22 @@ export class AppComponent {
     this.users();
     this.topics();
     this.questions();
+    this.series();
   }
 
   courses() {
     this.rest(this.coursesHttp, {
       name: 'randomName',
-      topic_id: 1
+      topic_id: 1,
+      content: '[]'
     } as Course);
+  }
+
+  series() {
+    this.rest(this.seriesHttp, {
+      name: 'test',
+      difficulty: 'easy',
+    } as Series);
   }
 
   questions() {
@@ -60,7 +72,6 @@ export class AppComponent {
       sound: 'string',
       sound_original: 'string',
       topic_id: 1,
-      situation_id: 1,
       reviewed: false,
     });
     this.request(this.questionsHttp.random(20));
@@ -79,7 +90,7 @@ export class AppComponent {
     this.rest(this.usersHttp, {
       first_name: 'first_name',
       last_name: 'last_name',
-      email: 'email@random.fr',
+      email: 'email@random2.fr',
       password: 'password',
       username: 'username',
     });

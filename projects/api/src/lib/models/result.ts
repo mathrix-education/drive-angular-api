@@ -1,7 +1,6 @@
 import {BaseId} from './base-id';
 import {Question} from './question';
 import {Answer} from './answer';
-import {Section} from './section';
 import {Series} from './series';
 
 export interface Result extends BaseId {
@@ -10,7 +9,7 @@ export interface Result extends BaseId {
   type: 'exam' | 'series';
   name: string;
   series: Series;
-  questions: (Question & { answer: Answer } & { section: Section[] })[];
+  questions: (Question & { answer: Answer })[];
   created_at: string;
   updated_at: string;
 }
