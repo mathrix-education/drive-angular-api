@@ -1,0 +1,26 @@
+.urls {
+  padding: 8px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.right {
+  background-color: green;
+  color: white;
+}
+
+.wrong {
+  background-color: red;
+  color: white;
+}
+
+nav {
+  margin-top: 8px;
+  margin-bottom: 8px;
+
+  button {
+    margin-right: 8px;
+  }
+}

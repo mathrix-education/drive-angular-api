@@ -1,0 +1,14 @@
+Bearer token <input [ngModel]="urlCatcher.bearerToken" (ngModelChange)="changeToken($event)">
+
+<nav>
+<button (click)="launchAll()">Toutes</button>
+<button (click)="launchCourses()">Courses</button>
+<button (click)="launchThemes()">Themes</button>
+<button (click)="launchUsers()">Users</button>
+</nav>
+
+
+<div class="urls" [ngClass]="{right: item.status === 200, wrong: item.status !== 200}" *ngFor="let item of urlCatcher.requests">
+  <span>{{item.url}}</span>
+  <span>{{item.status}}</span>
+</div>
