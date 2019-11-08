@@ -12,7 +12,7 @@ export * from './lib/http/questions-http/questions-http.service';
 export * from './lib/http/results-http/results-http.service';
 export * from './lib/http/series-http/series-http.service';
 export * from './lib/http/statistics-http/statistics-http.service';
-export * from './lib/http/tags-http/topics-http.service';
+export * from './lib/http/topics-http/topics-http.service';
 export * from './lib/http/themes-http/themes-http.service';
 export * from './lib/http/users-http/users-http.service';
 

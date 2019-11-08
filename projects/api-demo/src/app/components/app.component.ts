@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import {first, map, switchMap} from 'rxjs/operators';
 import {ThemesHttpService} from '../../../../api/src/lib/http/themes-http/themes-http.service';
 import {UsersHttpService} from '../../../../api/src/lib/http/users-http/users-http.service';
-import {TopicsHttpService} from '../../../../api/src/lib/http/tags-http/topics-http.service';
+import {TopicsHttpService} from '../../../../api/src/lib/http/topics-http/topics-http.service';
 import {QuestionsHttpService} from '../../../../api/src/lib/http/questions-http/questions-http.service';
 import {Course} from '../../../../api/src/lib/models/course';
 import {DataResponse} from '../../../../api/src/lib/responses/data-response';
