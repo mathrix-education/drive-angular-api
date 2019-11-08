@@ -10,14 +10,11 @@ export * from './lib/http/courses-http/courses-http.service';
 export * from './lib/http/files-http/files-http.service';
 export * from './lib/http/questions-http/questions-http.service';
 export * from './lib/http/results-http/results-http.service';
-export * from './lib/http/sections-http/sections-http.service';
 export * from './lib/http/series-http/series-http.service';
-export * from './lib/http/situations-http/situations-http.service';
 export * from './lib/http/statistics-http/statistics-http.service';
 export * from './lib/http/tags-http/topics-http.service';
 export * from './lib/http/themes-http/themes-http.service';
 export * from './lib/http/users-http/users-http.service';
-export * from './lib/http/worlds-http/worlds-http.service';
 
 // models
 export * from './lib/models/answer';
@@ -27,15 +24,12 @@ export * from './lib/models/directory';
 export * from './lib/models/file.interface';
 export * from './lib/models/question';
 export * from './lib/models/result';
-export * from './lib/models/section';
 export * from './lib/models/series';
-export * from './lib/models/situation';
 export * from './lib/models/statistics';
 export * from './lib/models/topic';
 export * from './lib/models/theme';
 export * from './lib/models/upload';
 export * from './lib/models/user';
-export * from './lib/models/world';
 
 // responses
 export * from './lib/responses/data-response';

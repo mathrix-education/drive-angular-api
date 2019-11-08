@@ -15,24 +15,6 @@ export class FilesHttpService {
   constructor(private http: HttpClient) {
   }
 
-  /**
-   * Upload files
-   * @param files
-   */
-  uploadMulti(files: File[]) {
-    const formData = new FormData();
-    files.forEach((file, index) => {
-      formData.append(index.toString(),
-        file, file.name);
-    });
-    console.log(files);
-    console.log(formData);
-    return this.http.post<{ [key: string]: string }[]>(`${this.base}/multi`, formData,
-      {
-        headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})
-      });
-  }
-
   explore(directory) {
     return this.http.get(`${this.base}/explore[/${directory}]`);
   }
