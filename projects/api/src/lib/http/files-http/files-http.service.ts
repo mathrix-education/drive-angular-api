@@ -25,10 +25,14 @@ export class FilesHttpService {
   }
 
 
+  /**
+   * Add a file on cdn
+   * @return url on cdn
+   */
   add(file: File, destination: string, fileName: string): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post<{ url: string }>(`${environment.api}/files/${destination}/${fileName}`, formData)
-      .pipe(map(req => req.url));
+    return this.http.post<any>(`${environment.api}/files/${destination}/${fileName}`, formData)
+      .pipe(map(req => req.data.url));
   }
 }
