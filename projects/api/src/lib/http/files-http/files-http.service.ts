@@ -25,10 +25,10 @@ export class FilesHttpService {
   }
 
 
-  add(file: File, destination: string): Observable<string> {
+  add(file: File, destination: string, fileName: string): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post<{ url: string }>(`${environment.api}/files/${destination}`, formData)
+    return this.http.post<{ url: string }>(`${environment.api}/files/${destination}/${fileName}`, formData)
       .pipe(map(req => req.url));
   }
 }
