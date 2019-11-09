@@ -9,8 +9,8 @@ import {DataResponse} from '../../responses/data-response';
 })
 export class QuestionsHttpService extends RestHttpService<Question> {
     protected readonly whitelist = [
-        'situational', 'reviewed', 'questions', 'choices', 'correct_choices', 'correction',
-        'tags', 'media', 'sound', 'order', 'source', 'topic_id'
+        'situational', 'reviewed', 'questions', 'choices', 'correct_choices', 'correction', 'correction_sound',
+        'media', 'sound', 'order', 'source', 'topic_id'
     ];
 
     constructor(protected http: HttpClient) {
