@@ -12,10 +12,10 @@ export interface Question extends BaseId {
   correction_sound_original: string;
   image: string;
   image_original: string;
-  video: string;
-  video_original: string;
-  sound: string;
-  sound_original: string;
+  /** image or video of the question */
+  media: string;
+  /** original image or video of the question */
+  media_original: string;
   order?: number;
   created_at?: number;
   updated_at?: number;
