@@ -1,4 +1,5 @@
 import {BaseId} from './base-id';
+import {Wall} from '../wall.type';
 
 export interface Question extends BaseId {
   situational: boolean;
@@ -6,7 +7,7 @@ export interface Question extends BaseId {
   choices: string[];
   correct_choices: number[];
   marked?: boolean;
-  correction: string;
+  correction: Wall;
   correction_original: string;
   correction_sound: string;
   correction_sound_original: string;
