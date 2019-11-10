@@ -7,22 +7,22 @@ import {API_CONFIG} from '../../api-config';
 
 @Injectable()
 export class QuestionsHttpService extends RestHttpService<Question> {
-    protected readonly whitelist = [
-        'situational', 'reviewed', 'questions', 'choices', 'correct_choices', 'correction', 'correction_sound',
-        'media', 'sound', 'order', 'source', 'topic_id'
-    ];
+  protected readonly whitelist = [
+    'situational', 'reviewed', 'questions', 'choices', 'correct_choices', 'correction', 'correction_sound',
+    'media', 'sound', 'order', 'source', 'topic_id'
+  ];
 
-    constructor(
-      protected http: HttpClient,
-      @Inject(API_CONFIG) protected api: string
-      ) {
-        super(http, '/questions', api);
-    }
+  constructor(
+    protected http: HttpClient,
+    @Inject(API_CONFIG) protected api: string
+  ) {
+    super(http, '/questions', api);
+  }
 
-    /** GET questions/random/${count}
-     * Return a random set of questions
-     */
-    random(count: number = 40) {
-        return this.http.get<DataResponse<Question[]>>(`${this.api}${this.base}/random/${count}`);
-    }
+  /** GET questions/random/${count}
+   * Return a random set of questions
+   */
+  random(count: number = 40) {
+    return this.http.get<DataResponse<Question[]>>(`${this.api}${this.base}/random/${count}`);
+  }
 }

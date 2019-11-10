@@ -1,3 +1,3 @@
 export interface UploadInterface {
-    content: any;
+  content: any;
 }
