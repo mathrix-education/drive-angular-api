@@ -1,5 +1,5 @@
 /**
- *The fileInterface describe how a file is structured
+ * The fileInterface describe how a file is structured
  * Interface is added because File is a reserved name
  */
 export interface FileInterface {

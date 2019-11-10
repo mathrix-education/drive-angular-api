@@ -20,7 +20,6 @@ export class SeriesHttpService extends RestHttpService<Series> {
 
   /**
    * PATCH /series/{seriesId}/questions
-   * @param questionIds
    */
   patchQuestions(seriesId: number, questionIds: number[]) {
     return this.patchRelated<Question>(seriesId, 'questions', questionIds);

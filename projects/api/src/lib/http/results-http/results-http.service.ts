@@ -14,8 +14,8 @@ export class ResultsHttpService {
   submit(seriesId: number, type: 'exam' | 'series', answers: { question_id: number, choices: number[], marked: boolean }[]) {
     return this.http.post<Result>(`${this.api}/results`, {
       series_id: seriesId,
-      answers: answers,
-      type: type
+      answers,
+      type
     });
   }
 }

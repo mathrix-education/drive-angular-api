@@ -21,12 +21,8 @@ export class AuthInterceptor implements HttpInterceptor {
       // add cors parameters
       const headerParams = {
         withCredentials: true,
-        Authorization: 'Bearer '
-      };
-
-      // if bearer token exists, add to authorization parameter
-      headerParams['setHeaders'] = {
-        Authorization: `Bearer ` + this.urlCatcher.bearerToken
+        Authorization: 'Bearer ',
+        setHeaders: {Authorization: `Bearer ` + this.urlCatcher.bearerToken}
       };
 
       // Pass on the cloned request instead of the original request.

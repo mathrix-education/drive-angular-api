@@ -1,5 +1,4 @@
 import {Inject, Injectable} from '@angular/core';
-import {environment} from '../../environment';
 import {SuccessResponse} from '../../responses/success-response';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
@@ -26,8 +25,8 @@ export class AuthHttpService {
    */
   login(email: string, password: string): Observable<DataResponse<LoginResponse>> {
     return this.http.post<DataResponse<LoginResponse>>(`${this.api}/auth/login`, {
-        email: email,
-        password: password
+        email,
+        password,
       }
     );
   }
@@ -39,7 +38,7 @@ export class AuthHttpService {
    */
   forgot(email: string) {
     return this.http.post<SuccessResponse>(`${this.api}/auth/forgot`, {
-      email: email
+      email
     });
   }
 
@@ -51,7 +50,7 @@ export class AuthHttpService {
    */
   reset(token: string, password: string) {
     return this.http.post<{ email: string }>(`${this.api}/auth/reset/${token}`, {
-      password: password
+      password
     });
   }
 }
