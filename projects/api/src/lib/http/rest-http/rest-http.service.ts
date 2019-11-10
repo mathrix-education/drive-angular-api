@@ -5,6 +5,7 @@ import {environment} from '../../environment';
 import {BaseId} from '../../models/base-id';
 import {SuccessResponse} from '../../responses/success-response';
 import {DataResponse} from '../../responses/data-response';
+import {Data} from '@angular/router';
 
 export class RestHttpService<T extends BaseId> {
   readonly api: string;
@@ -66,8 +67,8 @@ export class RestHttpService<T extends BaseId> {
   /**
    * Get a model, using `field` as selector.
    */
-  protected getBy<U>(id: number, field: string): Observable<PaginatedResponse<U> | DataResponse<U>> {
-    return this.http.get<PaginatedResponse<U> | DataResponse<U>>(`${this.api}${this.base}/${id}/${field}`);
+  protected getBy<U>(id: number, field: string): Observable<DataResponse<U>> {
+    return this.http.get<DataResponse<U>>(`${this.api}${this.base}/${id}/${field}`);
   }
 
   /**
