@@ -10,9 +10,7 @@ import {API_CONFIG} from '../../api-config';
  * Auth Http Service
  * Handle all API interaction with uri starting with `/auth`
  */
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class AuthHttpService {
   constructor(private http: HttpClient,
               @Inject(API_CONFIG) private api: string) {

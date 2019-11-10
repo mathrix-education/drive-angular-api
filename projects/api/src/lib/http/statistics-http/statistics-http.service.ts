@@ -5,9 +5,7 @@ import {DataResponse} from '../../responses/data-response';
 import {Statistics} from '../../models/statistics';
 import {API_CONFIG} from '../../api-config';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class StatisticsHttpService {
 
   private readonly base = '/statistics';

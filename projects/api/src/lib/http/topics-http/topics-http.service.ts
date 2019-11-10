@@ -7,9 +7,7 @@ import {Topic} from '../../models/topic';
 import {Theme} from '../../models/theme';
 import {API_CONFIG} from '../../api-config';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TopicsHttpService extends RestHttpService<Topic> {
 
   protected readonly whitelist = ['name', 'theme_id', 'slug', 'order'];

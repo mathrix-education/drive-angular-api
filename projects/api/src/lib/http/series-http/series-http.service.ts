@@ -5,9 +5,7 @@ import {Question} from '../../models/question';
 import {HttpClient} from '@angular/common/http';
 import {API_CONFIG} from '../../api-config';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class SeriesHttpService extends RestHttpService<Series> {
 
   protected readonly whitelist = ['name', 'difficulty'];

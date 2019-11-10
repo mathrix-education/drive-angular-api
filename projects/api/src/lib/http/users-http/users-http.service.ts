@@ -5,9 +5,7 @@ import {Inject, Injectable} from '@angular/core';
 import {PaginatedResponse} from '../../responses/paginated-response';
 import {API_CONFIG} from '../../api-config';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UsersHttpService extends RestHttpService<User> {
 
   protected readonly whitelist = ['first_name', 'last_name', 'email', 'username', 'password', 'settings', 'scopes'];

@@ -5,9 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {DataResponse} from '../../responses/data-response';
 import {API_CONFIG} from '../../api-config';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class QuestionsHttpService extends RestHttpService<Question> {
     protected readonly whitelist = [
         'situational', 'reviewed', 'questions', 'choices', 'correct_choices', 'correction', 'correction_sound',

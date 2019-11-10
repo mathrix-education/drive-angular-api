@@ -5,9 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import {Topic} from '../../models/topic';
 import {API_CONFIG} from '../../api-config';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ThemesHttpService extends RestHttpService<Theme> {
 
   protected readonly whitelist = ['name', 'slug'];

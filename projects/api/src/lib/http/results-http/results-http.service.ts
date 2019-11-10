@@ -3,9 +3,7 @@ import {Result} from '../../models/result';
 import {Inject, Injectable} from '@angular/core';
 import {API_CONFIG} from '../../api-config';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ResultsHttpService {
   constructor(private http: HttpClient,
               @Inject(API_CONFIG) protected api: string) {

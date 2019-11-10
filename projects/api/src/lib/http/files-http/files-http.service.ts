@@ -5,9 +5,7 @@ import {map} from 'rxjs/operators';
 import {FolderResponse} from '../../responses/folder-response';
 import {API_CONFIG} from '../../api-config';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FilesHttpService {
 
   private readonly base = `${this.api}/files`;
