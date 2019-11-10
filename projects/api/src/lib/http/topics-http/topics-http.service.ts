@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {Question} from '../../models/question';
 import {Course} from '../../models/course';
 import {Topic} from '../../models/topic';
+import {Theme} from '../../models/theme';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class TopicsHttpService extends RestHttpService<Topic> {
   }
 
   theme(topicId: number) {
-    return this.getBy(topicId, 'theme');
+    return this.getBy<Theme>(topicId, 'theme');
   }
 
 
