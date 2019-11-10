@@ -1,0 +1,37 @@
+import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
+import {environment} from '../../environments/environment';
+import {UrlCatcherService} from '../services/url-catcher.service';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthInterceptor implements HttpInterceptor {
+
+  constructor(private urlCatcher: UrlCatcherService) {
+  }
+
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+
+    // Add authentication to request to our API
+    if (req.url.startsWith(environment.api)) {
+
+      // add cors parameters
+      const headerParams = {
+        withCredentials: true,
+        Authorization: 'Bearer '
+      };
+
+      // if bearer token exists, add to authorization parameter
+      headerParams['setHeaders'] = {
+        Authorization: `Bearer ` + this.urlCatcher.bearerToken
+      };
+
+      // Pass on the cloned request instead of the original request.
+      return next.handle(req.clone(headerParams));
+    } else {
+      return next.handle(req);
+    }
+  }
+}

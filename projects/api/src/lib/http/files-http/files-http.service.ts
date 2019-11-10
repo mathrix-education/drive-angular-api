@@ -15,24 +15,6 @@ export class FilesHttpService {
   constructor(private http: HttpClient) {
   }
 
-  /**
-   * Upload files
-   * @param files
-   */
-  uploadMulti(files: File[]) {
-    const formData = new FormData();
-    files.forEach((file, index) => {
-      formData.append(index.toString(),
-        file, file.name);
-    });
-    console.log(files);
-    console.log(formData);
-    return this.http.post<{ [key: string]: string }[]>(`${this.base}/multi`, formData,
-      {
-        headers: new HttpHeaders({'Content-Type': 'multipart/form-data'})
-      });
-  }
-
   explore(directory) {
     return this.http.get(`${this.base}/explore[/${directory}]`);
   }
@@ -43,10 +25,14 @@ export class FilesHttpService {
   }
 
 
-  add(file: File, destination: string): Observable<string> {
+  /**
+   * Add a file on cdn
+   * @return url on cdn
+   */
+  add(file: File, destination: string, fileName: string): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post<{ url: string }>(`${environment.api}/files/${destination}`, formData)
-      .pipe(map(req => req.url));
+    return this.http.post<any>(`${environment.api}/files/${destination}/${fileName}`, formData)
+      .pipe(map(req => req.data.url));
   }
 }
