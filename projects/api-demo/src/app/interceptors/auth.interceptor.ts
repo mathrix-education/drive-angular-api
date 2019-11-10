@@ -1,21 +1,22 @@
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
-import {environment} from '../../environments/environment';
 import {UrlCatcherService} from '../services/url-catcher.service';
+import {API_CONFIG} from '../../../../api/src/lib/api-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private urlCatcher: UrlCatcherService) {
+  constructor(private urlCatcher: UrlCatcherService,
+              @Inject(API_CONFIG) protected api: string) {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
     // Add authentication to request to our API
-    if (req.url.startsWith(environment.api)) {
+    if (req.url.startsWith(this.api)) {
 
       // add cors parameters
       const headerParams = {

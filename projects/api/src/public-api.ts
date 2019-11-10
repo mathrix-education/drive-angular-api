@@ -40,4 +40,4 @@ export * from './lib/responses/paginated-response';
 export * from './lib/responses/success-response';
 
 // injection token
-export * from './lib/api-config';
+export * from './lib/drive-api.module';

@@ -1,8 +1,9 @@
 import {Question} from '../../models/question';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {RestHttpService} from '../rest-http/rest-http.service';
 import {HttpClient} from '@angular/common/http';
 import {DataResponse} from '../../responses/data-response';
+import {API_CONFIG} from '../../api-config';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,11 @@ export class QuestionsHttpService extends RestHttpService<Question> {
         'media', 'sound', 'order', 'source', 'topic_id'
     ];
 
-    constructor(protected http: HttpClient) {
-        super(http, '/questions');
+    constructor(
+      protected http: HttpClient,
+      @Inject(API_CONFIG) protected api: string
+      ) {
+        super(http, '/questions', api);
     }
 
     /** GET questions/random/${count}

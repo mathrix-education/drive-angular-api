@@ -46,7 +46,8 @@ export class AppComponent {
     this.rest(this.coursesHttp, {
       name: 'randomName',
       topic_id: 1,
-      content: '[]'
+      order: 0,
+      content: []
     } as Course);
   }
 

@@ -1,18 +1,17 @@
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {PaginatedResponse} from '../../responses/paginated-response';
-import {environment} from '../../environment';
 import {BaseId} from '../../models/base-id';
 import {SuccessResponse} from '../../responses/success-response';
 import {DataResponse} from '../../responses/data-response';
-import {Data} from '@angular/router';
 
 export class RestHttpService<T extends BaseId> {
-  readonly api: string;
   protected readonly whitelist: string[];
 
-  constructor(protected http: HttpClient, readonly base: string = '/') {
-    this.api = environment.api;
+  constructor(
+    protected http: HttpClient,
+    readonly base: string = '/',
+    protected api: string) {
   }
 
   /**

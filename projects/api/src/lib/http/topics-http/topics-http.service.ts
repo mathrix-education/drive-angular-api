@@ -1,10 +1,11 @@
 import {RestHttpService} from '../rest-http/rest-http.service';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Question} from '../../models/question';
 import {Course} from '../../models/course';
 import {Topic} from '../../models/topic';
 import {Theme} from '../../models/theme';
+import {API_CONFIG} from '../../api-config';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,10 @@ export class TopicsHttpService extends RestHttpService<Topic> {
 
   protected readonly whitelist = ['name', 'theme_id', 'slug', 'order'];
 
-  constructor(protected http: HttpClient) {
-    super(http, '/topics');
+  constructor(protected http: HttpClient,
+              @Inject(API_CONFIG) protected api: string
+  ) {
+    super(http, '/topics', api);
   }
 
   questions(topicId: number, page: number = 0, perPage: number = 10) {

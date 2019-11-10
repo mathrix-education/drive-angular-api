@@ -1,19 +1,20 @@
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {environment} from '../../environment';
 import {Observable} from 'rxjs';
 import {DataResponse} from '../../responses/data-response';
 import {Statistics} from '../../models/statistics';
+import {API_CONFIG} from '../../api-config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StatisticsHttpService {
 
-  private readonly api = environment.api;
   private readonly base = '/statistics';
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    @Inject(API_CONFIG) protected api: string) {
   }
 
   /**

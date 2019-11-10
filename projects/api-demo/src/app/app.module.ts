@@ -2,11 +2,10 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './components/app.component';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import {API_CONFIG} from 'api';
-import {AuthInterceptor} from './interceptors/auth.interceptor';
-import {HttpValidatorInterceptor} from './interceptors/http-validator.interceptor';
 import {FormsModule} from '@angular/forms';
+import {environment} from '../environments/environment';
+import {API_CONFIG} from '../../../api/src/lib/api-config';
+import {DriveApiModule} from '../../../api/src/lib/drive-api.module';
 
 @NgModule({
   declarations: [
@@ -14,14 +13,11 @@ import {FormsModule} from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    FormsModule
+    FormsModule,
+    DriveApiModule.withConfig({api: environment.api}),
   ],
   providers: [
-    {provide: API_CONFIG, useValue: 'https://dev.api.mathrixdrive.fr/'},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
-    {provide: HTTP_INTERCEPTORS, useClass: HttpValidatorInterceptor, multi: true},
-
+    {provide: API_CONFIG, useValue: environment.api},
   ],
   bootstrap: [AppComponent]
 })

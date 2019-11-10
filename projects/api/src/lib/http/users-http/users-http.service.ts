@@ -1,8 +1,9 @@
 import {User} from '../../models/user';
 import {RestHttpService} from '../rest-http/rest-http.service';
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {Inject, Injectable} from '@angular/core';
 import {PaginatedResponse} from '../../responses/paginated-response';
+import {API_CONFIG} from '../../api-config';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,10 @@ export class UsersHttpService extends RestHttpService<User> {
 
   protected readonly whitelist = ['first_name', 'last_name', 'email', 'username', 'password', 'settings', 'scopes'];
 
-  constructor(protected http: HttpClient) {
-    super(http, '/users');
+  constructor(protected http: HttpClient,
+              @Inject(API_CONFIG) protected api: string
+  ) {
+    super(http, '/users', api);
   }
 
   /**
@@ -31,10 +34,6 @@ export class UsersHttpService extends RestHttpService<User> {
    * GET /users/search/{query}/{page}/{perPage}?order={order}&dir={dir}
    * Search for users matching a given query.
    *
-   * @param query
-   * @param page
-   * @param perPage
-   * @param options
    */
   neoSearch(query: string, page: number, perPage: number, options: any = {}) {
     // Serialize query string
