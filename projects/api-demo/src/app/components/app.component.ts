@@ -11,6 +11,7 @@ import {DataResponse} from '../../../../api/src/lib/responses/data-response';
 import {CoursesHttpService} from '../../../../api/src/lib/http/courses-http/courses-http.service';
 import {Series} from '../../../../api/src/lib/models/series';
 import {SeriesHttpService} from '../../../../api/src/lib/http/series-http/series-http.service';
+import {FilesHttpService} from '../../../../api/src/lib/http/files-http/files-http.service';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ export class AppComponent {
     private topicsHttp: TopicsHttpService,
     private usersHttp: UsersHttpService,
     private questionsHttp: QuestionsHttpService,
+    private filesHttp: FilesHttpService,
     public urlCatcher: UrlCatcherService) {
     this.urlCatcher.bearerToken = localStorage.getItem(this.localStorageToken);
   }
@@ -40,6 +42,7 @@ export class AppComponent {
     this.topics();
     this.questions();
     this.series();
+    this.files();
   }
 
   courses() {
@@ -109,6 +112,14 @@ export class AppComponent {
       this.topicsHttp.questions(1),
       this.topicsHttp.theme(1),
     ]);
+  }
+
+  files() {
+    this.rest(this.filesHttp, {
+      directory: ''
+    });
+
+    this.filesHttp.list('');
   }
 
   changeToken(token: string) {

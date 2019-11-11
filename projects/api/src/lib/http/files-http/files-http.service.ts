@@ -15,24 +15,27 @@ export class FilesHttpService {
   ) {
   }
 
-  explore(directory) {
-    return this.http.get(`${this.base}/explore[/${directory}]`);
+  list(directory: string = '') {
+    return this.http.get(`${this.base}/files/list/${directory}`);
   }
-
-
-  tree(directory: string = ''): Observable<FolderResponse> {
-    return this.http.get<FolderResponse>(`${this.base}/explore/${directory}`);
-  }
-
 
   /**
-   * Add a file on cdn
+   * Upload a file to cdn
    * @return url on cdn
    */
-  add(file: File, destination: string, fileName: string): Observable<string> {
+  upload(file: File, destination: string, fileName: string): Observable<string> {
     const formData = new FormData();
     formData.append('file', file);
     return this.http.post<any>(`${this.api}/files/${destination}/${fileName}`, formData)
       .pipe(map(req => req.data.url));
+  }
+
+  /**
+   * get metadata of a file on cdn
+   * @return url on cdn
+   */
+
+  metadata(directory: string) {
+    return this.http.get(`${this.base}/files/${directory}`);
   }
 }
