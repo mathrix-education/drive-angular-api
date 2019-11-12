@@ -115,11 +115,10 @@ export class AppComponent {
   }
 
   files() {
-    this.rest(this.filesHttp, {
-      directory: ''
-    });
-
-    this.filesHttp.list('');
+    this.requests([
+      this.filesHttp.list('sounds'),
+      this.filesHttp.list('.')
+    ]);
   }
 
   changeToken(token: string) {
@@ -149,7 +148,6 @@ export class AppComponent {
         }))
     ]);
   }
-
 
 
   /**

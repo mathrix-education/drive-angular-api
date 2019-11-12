@@ -1,8 +1,11 @@
+import {BaseId} from './base-id';
+
 /**
  * The fileInterface describe how a file is structured
  * Interface is added because File is a reserved name
  */
-export interface FileInterface {
+
+export interface FileInterface extends BaseId {
   basename: string;
   dirname: string;
   extension: string;
