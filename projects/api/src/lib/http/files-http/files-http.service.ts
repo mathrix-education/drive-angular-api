@@ -15,13 +15,12 @@ export class FilesHttpService {
   ) {
   }
 
-  explore(directory) {
-    return this.http.get(`${this.base}/explore[/${directory}]`);
+  move(file: string, newDestination: string) {
+    return this.http.patch(`${this.base}/${file}`, {destination: newDestination});
   }
 
-
-  tree(directory: string = ''): Observable<FolderResponse> {
-    return this.http.get<FolderResponse>(`${this.base}/explore/${directory}`);
+  list(directory: string = ''): Observable<FolderResponse> {
+    return this.http.get<FolderResponse>(`${this.base}/list/${directory}`);
   }
 
 
