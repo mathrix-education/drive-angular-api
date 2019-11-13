@@ -11,6 +11,7 @@ import {DataResponse} from '../../../../api/src/lib/responses/data-response';
 import {CoursesHttpService} from '../../../../api/src/lib/http/courses-http/courses-http.service';
 import {Series} from '../../../../api/src/lib/models/series';
 import {SeriesHttpService} from '../../../../api/src/lib/http/series-http/series-http.service';
+import {FilesHttpService} from '../../../../api/src/lib/http/files-http/files-http.service';
 
 @Component({
   selector: 'app-root',
@@ -28,6 +29,7 @@ export class AppComponent {
     private topicsHttp: TopicsHttpService,
     private usersHttp: UsersHttpService,
     private questionsHttp: QuestionsHttpService,
+    private filesHttp: FilesHttpService,
     public urlCatcher: UrlCatcherService) {
     this.urlCatcher.bearerToken = localStorage.getItem(this.localStorageToken);
   }
@@ -95,6 +97,15 @@ export class AppComponent {
     });
   }
 
+  /**
+   * Sends requests that tests the cdn routes, the move routes DO WORK so be wary while testing
+   */
+  files() {
+    this.requests([
+      this.filesHttp.list('.'),
+      this.filesHttp.list('tests')
+    ]);
+  }
 
   topics() {
     this.rest(this.topicsHttp, {
@@ -138,7 +149,6 @@ export class AppComponent {
         }))
     ]);
   }
-
 
 
   /**

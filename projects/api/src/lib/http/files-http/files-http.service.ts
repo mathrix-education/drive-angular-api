@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {FolderResponse} from '../../responses/folder-response';
 import {API_CONFIG} from '../../api-config';
+import {FileInterface} from '../../models/file.interface';
 
 @Injectable()
 export class FilesHttpService {
@@ -15,13 +16,12 @@ export class FilesHttpService {
   ) {
   }
 
-  explore(directory) {
-    return this.http.get(`${this.base}/explore[/${directory}]`);
+  move(file: string, newDestination: string): Observable<FileInterface> {
+    return this.http.patch<FileInterface>(`${this.base}/${file}`, {destination: newDestination});
   }
 
-
-  tree(directory: string = ''): Observable<FolderResponse> {
-    return this.http.get<FolderResponse>(`${this.base}/explore/${directory}`);
+  list(directory: string = ''): Observable<FolderResponse> {
+    return this.http.get<FolderResponse>(`${this.base}/list/${directory}`);
   }
 
 
