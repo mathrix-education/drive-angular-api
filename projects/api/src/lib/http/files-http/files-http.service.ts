@@ -4,6 +4,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 import {FolderResponse} from '../../responses/folder-response';
 import {API_CONFIG} from '../../api-config';
+import {FileInterface} from '../../models/file.interface';
 
 @Injectable()
 export class FilesHttpService {
@@ -15,8 +16,8 @@ export class FilesHttpService {
   ) {
   }
 
-  move(file: string, newDestination: string) {
-    return this.http.patch(`${this.base}/${file}`, {destination: newDestination});
+  move(file: string, newDestination: string): Observable<FileInterface> {
+    return this.http.patch<FileInterface>(`${this.base}/${file}`, {destination: newDestination});
   }
 
   list(directory: string = ''): Observable<FolderResponse> {

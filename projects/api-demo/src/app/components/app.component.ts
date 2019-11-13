@@ -98,13 +98,11 @@ export class AppComponent {
   }
 
   /**
-   * Sends requests that tests the cdn routes, the move routes are commented only since they point to a temporary file
+   * Sends requests that tests the cdn routes, the move routes DO WORK so be wary while testing
    */
   files() {
     this.requests([
       this.filesHttp.list('.'),
-      // this.filesHttp.move('undefinednew', 'undefined'),
-      // this.filesHttp.move('undefined', 'undefinednew'),
       this.filesHttp.list('tests')
     ]);
   }
