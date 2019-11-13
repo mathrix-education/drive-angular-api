@@ -10,7 +10,7 @@ import {DataResponse} from '../../responses/data-response';
 
 @Injectable()
 export class FilesHttpService extends RestHttpService<FileInterface> {
-  protected readonly whitelist: string[] = [];
+  protected readonly whitelist: string[] = ['destination'];
 
   constructor(protected http: HttpClient,
               @Inject(API_CONFIG) protected api: string
@@ -38,6 +38,15 @@ export class FilesHttpService extends RestHttpService<FileInterface> {
    */
 
   metadata(directory: string) {
-    return this.http.get(`${this.base}/files/${directory}`);
+    return this.http.get(`files/${directory}`);
+  }
+
+  /**
+   * move a file on cdn
+   * @return url on cdn
+   */
+
+  move(file: string, newDestination: string) {
+    return this.patch(`${file}`, {destination: newDestination});
   }
 }

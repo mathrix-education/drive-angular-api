@@ -117,6 +117,10 @@ export class AppComponent {
   files() {
     this.requests([
       this.filesHttp.list('sounds'),
+      this.filesHttp.list('.'),
+      this.filesHttp.move('yolotest.png', 'yolotestnew.png'),
+      this.filesHttp.list('.'),
+      this.filesHttp.move('yolotestnew.png', 'yolotest.png'),
       this.filesHttp.list('.')
     ]);
   }
