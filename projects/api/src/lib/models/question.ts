@@ -22,7 +22,7 @@ export interface Question extends BaseId {
   updated_at?: number;
   topic_id: number;
   review: {
-    audoCorrectionToWritten: boolean;
+    audioCorrectionToWritten: boolean;
     reformulateQuestion: boolean;
     reformulateCorrection: boolean;
     editMedia: boolean;

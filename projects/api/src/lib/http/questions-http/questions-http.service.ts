@@ -8,7 +8,7 @@ import {API_CONFIG} from '../../api-config';
 @Injectable()
 export class QuestionsHttpService extends RestHttpService<Question> {
   protected readonly whitelist = [
-    'situational', 'reviewed', 'questions', 'choices', 'correct_choices', 'correction', 'correction_sound',
+    'situational', 'review', 'questions', 'choices', 'correct_choices', 'correction', 'correction_sound',
     'media', 'sound', 'order', 'source', 'topic_id'
   ];
 
