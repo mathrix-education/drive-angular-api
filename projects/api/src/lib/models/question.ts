@@ -21,5 +21,10 @@ export interface Question extends BaseId {
   created_at?: number;
   updated_at?: number;
   topic_id: number;
-  reviewed: boolean;
+  review: {
+    audoCorrectionToWritten: boolean;
+    reformulateQuestion: boolean;
+    reformulateCorrection: boolean;
+    editMedia: boolean;
+  } | null;
 }
