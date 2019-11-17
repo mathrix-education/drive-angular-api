@@ -7,6 +7,7 @@ import {API_CONFIG} from '../../../api/src/lib/api-config';
 import {DriveApiModule} from '../../../api/src/lib/drive-api.module';
 import {AuthInterceptor} from './interceptors/auth.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpValidatorInterceptor} from './interceptors/http-validator.interceptor';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {HTTP_INTERCEPTORS} from '@angular/common/http';
   ],
   providers: [
     {provide: API_CONFIG, useValue: environment.api},
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: HttpValidatorInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]
 })

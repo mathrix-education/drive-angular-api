@@ -32,6 +32,10 @@ export class AppComponent {
     private filesHttp: FilesHttpService,
     public urlCatcher: UrlCatcherService) {
     this.urlCatcher.bearerToken = localStorage.getItem(this.localStorageToken);
+
+    setTimeout(() => {
+      console.log(this.urlCatcher);
+    }, 2000);
   }
 
   all() {
@@ -66,8 +70,7 @@ export class AppComponent {
       questions: ['string'],
       choices: ['choice A', 'choice B'],
       correct_choices: [1],
-      correction: 'string',
-      correction_original: 'string',
+      correction: [],
       media: 'string',
       media_original: 'string',
       sound: 'string',
