@@ -106,7 +106,9 @@ export class AppComponent {
   files() {
     this.requests([
       this.filesHttp.list('.'),
-      this.filesHttp.list('tests')
+      this.filesHttp.list('tests'),
+      this.filesHttp.metadata('undefined'),
+      this.filesHttp.metadata('tests/')
     ]);
   }
 
