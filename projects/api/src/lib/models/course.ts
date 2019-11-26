@@ -12,4 +12,8 @@ export interface Course extends BaseId {
   order: number;
   /** silicate content */
   content: Wall;
+  /** labels for reviewing */
+  review: {
+    verified: boolean
+  };
 }
