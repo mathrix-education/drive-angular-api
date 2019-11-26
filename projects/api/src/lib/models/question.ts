@@ -26,5 +26,6 @@ export interface Question extends BaseId {
     reformulateQuestion: boolean;
     reformulateCorrection: boolean;
     editMedia: boolean;
+    beautifyImage: boolean;
   } | null;
 }
