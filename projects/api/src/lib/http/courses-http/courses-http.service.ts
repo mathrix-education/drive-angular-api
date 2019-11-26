@@ -7,7 +7,7 @@ import {API_CONFIG} from '../../api-config';
 @Injectable()
 export class CoursesHttpService extends RestHttpService <Course> {
 
-  protected readonly whitelist = ['name', 'topic_id', 'order', 'content'];
+  protected readonly whitelist = ['name', 'topic_id', 'order', 'content', 'review'];
 
   constructor(http: HttpClient,
               @Inject(API_CONFIG) protected api: string
