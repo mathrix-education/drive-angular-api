@@ -28,5 +28,6 @@ export interface Question extends BaseId {
     reformulateCorrection: boolean;
     editMedia: boolean;
     beautifyImage: boolean;
+    belongsTwoThemes: boolean;
   } | null;
 }
