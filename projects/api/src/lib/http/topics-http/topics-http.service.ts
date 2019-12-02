@@ -18,11 +18,11 @@ export class TopicsHttpService extends RestHttpService<Topic> {
     super(http, '/topics', api);
   }
 
-  questions(topicId: number, page: number = 0, perPage: number = 10) {
+  questions(topicId: number, page: number = 0, perPage: number = 50) {
     return this.getRelated<Question>(topicId, 'questions', page, perPage);
   }
 
-  courses(topicId: number, page: number = 0, perPage: number = 10) {
+  courses(topicId: number, page: number = 0, perPage: number = 50) {
     return this.getRelated<Course>(topicId, 'courses', page, perPage);
   }
 

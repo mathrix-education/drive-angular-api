@@ -17,7 +17,7 @@ export class ThemesHttpService extends RestHttpService<Theme> {
   }
 
 
-  topics(themeId: number, page: number = 0, perPage: number = 10) {
+  topics(themeId: number, page: number = 0, perPage: number = 50) {
     return this.getRelated<Topic>(themeId, 'topics', page, perPage);
   }
 }
