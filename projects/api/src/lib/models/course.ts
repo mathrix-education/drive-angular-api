@@ -16,4 +16,5 @@ export interface Course extends BaseId {
   review: {
     verified: boolean
   };
+  updated_at: string;
 }
